@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc, query, where, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -26,6 +26,10 @@ const authOverlay = document.getElementById('auth-overlay');
 const closeBtn = document.getElementById('close-btn');
 const showSignupLink = document.getElementById('show-signup-link');
 const showLoginLink = document.getElementById('show-login-link');
+const profileMenu = document.getElementById('profile-menu');
+const logoutBtn = document.getElementById('logout-btn');
+const collectionBtn = document.getElementById('collection-btn');
+const dashboardBtn = document.getElementById('dashboard-btn');
 
 function showLoader() { loader.classList.remove("hidden"); }
 function hideLoader() { loader.classList.add("hidden"); }
@@ -43,6 +47,41 @@ function suggestUsernames(username) {
     }
     return suggestions;
 }
+
+// Show or hide auth forms/profile menu based on auth state
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        // User logged in, get user data
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+            userNameDisplay.textContent = userDoc.data().fullName;
+            userDisplay.classList.remove("hidden");
+        }
+        // Hide auth overlay and forms
+        authOverlay.classList.remove("visible");
+        signupForm.classList.add("hidden");
+        loginForm.classList.add("hidden");
+
+        // Change profile icon title to something else if you want
+        profileIcon.title = "Profile menu";
+
+        // Show profile icon
+        profileIcon.style.display = "block";
+    } else {
+        // No user logged in
+        userNameDisplay.textContent = "";
+        userDisplay.classList.add("hidden");
+
+        // Show login form by default
+        signupForm.classList.add("hidden");
+        loginForm.classList.remove("hidden");
+
+        // Show auth overlay on clicking profile icon (login/signup)
+        profileIcon.title = "Login or Sign Up";
+
+        profileMenu.style.display = "none"; // hide profile menu if open
+    }
+});
 
 // SIGNUP
 signupForm.addEventListener("submit", async (e) => {
@@ -80,9 +119,7 @@ signupForm.addEventListener("submit", async (e) => {
         });
 
         alert("✅ Sign up successful!");
-        userNameDisplay.textContent = fullName;
-        userDisplay.classList.remove("hidden");
-        authOverlay.classList.remove("visible"); // hide auth form
+        // Auth state listener will handle UI update
 
     } catch (error) {
         alert("❌ Error: " + error.message);
@@ -117,18 +154,12 @@ loginForm.addEventListener("submit", async (e) => {
         }
 
         const userCredential = await signInWithEmailAndPassword(auth, emailToUse, password);
-        const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
 
-        if (userDoc.exists()) {
-            userNameDisplay.textContent = userDoc.data().fullName;
-            userDisplay.classList.remove("hidden");
-        }
-
-        alert(" Login successful!");
-        authOverlay.classList.remove("visible"); // hide auth form
+        alert("✅ Login successful!");
+        // Auth state listener will handle UI update
 
     } catch (error) {
-        alert(" Error: " + error.message);
+        alert("❌ Error: " + error.message);
     } finally {
         hideLoader();
         submitBtn.textContent = originalBtnText;
@@ -136,8 +167,24 @@ loginForm.addEventListener("submit", async (e) => {
     }
 });
 
-// Overlay open/close
-profileIcon.addEventListener('click', () => authOverlay.classList.add('visible'));
+// Open auth overlay only if user not logged in
+profileIcon.addEventListener('click', async () => {
+    const user = auth.currentUser;
+    if (user) {
+        // Toggle profile menu overlay
+        if (profileMenu.style.display === "block") {
+            profileMenu.style.display = "none";
+        } else {
+            profileMenu.style.display = "block";
+        }
+        authOverlay.classList.remove('visible'); // make sure auth overlay is hidden
+    } else {
+        // Show login/signup overlay
+        authOverlay.classList.add('visible');
+    }
+});
+
+// Close auth overlay button
 closeBtn.addEventListener('click', () => authOverlay.classList.remove('visible'));
 
 // Switch forms
@@ -150,4 +197,21 @@ showLoginLink.addEventListener('click', (e) => {
     e.preventDefault();
     signupForm.classList.add('hidden');
     loginForm.classList.remove('hidden');
+});
+
+// Profile menu button handlers
+logoutBtn.addEventListener('click', async () => {
+    await signOut(auth);
+    profileMenu.style.display = "none";
+    alert("Logged out successfully.");
+});
+
+collectionBtn.addEventListener('click', () => {
+    alert("Go to Collection (implement navigation)");
+    profileMenu.style.display = "none";
+});
+
+dashboardBtn.addEventListener('click', () => {
+    alert("Go to Dashboard (implement navigation)");
+    profileMenu.style.display = "none";
 });
