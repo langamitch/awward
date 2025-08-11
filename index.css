@@ -10,7 +10,7 @@ body {
 /* Header and Profile Icon */
 header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 20px;
     background-color: #ffffff;
     border-bottom: 1px solid #dddfe2;
@@ -283,4 +283,8 @@ p{
     border: 1px solid #e5e7eb; /* light gray */
     font-size: 0.875rem; /* 14px */
     font-weight: 500;
+  }
+
+  #user-display span{
+    font-size: 11.2px
   }
