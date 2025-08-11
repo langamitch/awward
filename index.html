@@ -22,7 +22,30 @@
     <main>
         <h1>Welcome to My Website</h1>
         <p>This is a demonstration page. Click the profile icon in the top-right corner to open the login panel.</p>
+
+        <!-- Loader -->
+<div id="loader" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="loader border-4 border-t-blue-500 border-gray-200 rounded-full w-12 h-12 animate-spin"></div>
+</div>
+
+<!-- User Display -->
+<div id="user-display" class="hidden fixed bottom-4 right-4 bg-white shadow-lg px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium">
+    Logged in as: <span id="user-name"></span>
+</div>
+
+<style>
+    .hidden { display: none; }
+    .loader {
+        border-radius: 50%;
+        border-top-color: #3498db;
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
     </main>
+
+
 
     <div id="auth-overlay">
         <div class="button-top">
@@ -94,98 +117,128 @@
         </div>
     </div></div>
 
-<!-- Firebase App & Auth & Firestore -->
-<script type="module">
-    // Import Firebase functions
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
-    import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+        import { getFirestore, setDoc, doc, getDoc, query, where, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+    
+        const firebaseConfig = {
+  apiKey: "AIzaSyDlyR-POe1lSy09eh0yKOiElYRhndhQBnM",
+  authDomain: "detto-f706a.firebaseapp.com",
+  projectId: "detto-f706a",
+  storageBucket: "detto-f706a.firebasestorage.app",
+  messagingSenderId: "221862826558",
+  appId: "1:221862826558:web:537ec8aabce53d414db76f"
+};
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDlyR-POe1lSy09eh0yKOiElYRhndhQBnM",
-    authDomain: "detto-f706a.firebaseapp.com",
-    projectId: "detto-f706a",
-    storageBucket: "detto-f706a.firebasestorage.app",
-    messagingSenderId: "221862826558",
-    appId: "1:221862826558:web:537ec8aabce53d414db76f"
-  };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    // DOM elements
-    const profileIcon = document.getElementById('profile-icon');
-    const authOverlay = document.getElementById('auth-overlay');
-    const closeBtn = document.getElementById('close-btn');
-
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
-
-    const showSignupLink = document.getElementById('show-signup-link');
-    const showLoginLink = document.getElementById('show-login-link');
-
-    // Open/Close overlay
-    profileIcon.addEventListener('click', () => authOverlay.classList.add('visible'));
-    closeBtn.addEventListener('click', () => authOverlay.classList.remove('visible'));
-
-    // Switch forms
-    showSignupLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginForm.classList.add('hidden');
-        signupForm.classList.remove('hidden');
-    });
-
-    showLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        signupForm.classList.add('hidden');
-        loginForm.classList.remove('hidden');
-    });
-
-    // SIGN UP
-    signupForm.querySelector('form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const fullName = document.querySelector('#signup-form input[placeholder="Enter your full name"]').value.trim();
-        const username = document.querySelector('#signup-form input[placeholder="Choose a username"]').value.trim();
-        const email = document.querySelector('#signup-form input[placeholder="Your email address"]').value.trim();
-        const password = document.querySelector('#signup-form input[placeholder="Create a password"]').value;
-
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-
-            // Save extra user data in Firestore
-            await setDoc(doc(db, "users", user.uid), {
-                fullName,
-                username,
-                email,
-                createdAt: new Date()
-            });
-
-            alert("✅ Sign up successful!");
-            authOverlay.classList.remove('visible');
-        } catch (error) {
-            alert("❌ Error: " + error.message);
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+    
+        // Elements
+        const loader = document.getElementById("loader");
+        const userDisplay = document.getElementById("user-display");
+        const userNameDisplay = document.getElementById("user-name");
+    
+        const signupForm = document.querySelector("#signup-form form");
+        const loginForm = document.querySelector("#login-form form");
+    
+        function showLoader() { loader.classList.remove("hidden"); }
+        function hideLoader() { loader.classList.add("hidden"); }
+    
+        async function isUsernameTaken(username) {
+            const q = query(collection(db, "users"), where("username", "==", username.toLowerCase()));
+            const snapshot = await getDocs(q);
+            return !snapshot.empty;
         }
-    });
-
-    // SIGN IN
-    loginForm.querySelector('form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const emailOrUsername = document.querySelector('#login-email').value.trim();
-        const password = document.querySelector('#login-password').value;
-
-        try {
-            // If you want to allow username login, you’d need to query Firestore.
-            const userCredential = await signInWithEmailAndPassword(auth, emailOrUsername, password);
-            alert("✅ Login successful!");
-            authOverlay.classList.remove('visible');
-        } catch (error) {
-            alert("❌ Error: " + error.message);
+    
+        function suggestUsernames(username) {
+            const suggestions = [];
+            for (let i = 1; i <= 3; i++) {
+                suggestions.push(username + i);
+            }
+            return suggestions;
         }
-    });
-</script>
+    
+        // SIGNUP
+        signupForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const fullName = signupForm.querySelector('input[placeholder="Enter your full name"]').value.trim();
+            const username = signupForm.querySelector('input[placeholder="Choose a username"]').value.trim().toLowerCase();
+            const email = signupForm.querySelector('input[placeholder="Your email address"]').value.trim();
+            const password = signupForm.querySelector('input[placeholder="Create a password"]').value;
+    
+            showLoader();
+    
+            try {
+                // Check username availability
+                if (await isUsernameTaken(username)) {
+                    hideLoader();
+                    const suggestions = suggestUsernames(username);
+                    alert(`❌ Username taken! Try: ${suggestions.join(", ")}`);
+                    return;
+                }
+    
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+    
+                await setDoc(doc(db, "users", user.uid), {
+                    fullName,
+                    username,
+                    email,
+                    createdAt: new Date()
+                });
+    
+                alert("✅ Sign up successful!");
+                userNameDisplay.textContent = fullName;
+                userDisplay.classList.remove("hidden");
+    
+            } catch (error) {
+                alert("❌ Error: " + error.message);
+            } finally {
+                hideLoader();
+            }
+        });
+    
+        // LOGIN (Email or Username)
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const emailOrUsername = document.querySelector('#login-email').value.trim().toLowerCase();
+            const password = document.querySelector('#login-password').value;
+    
+            showLoader();
+    
+            try {
+                let emailToUse = emailOrUsername;
+    
+                // If it doesn't look like an email, assume it's a username
+                if (!emailOrUsername.includes("@")) {
+                    const q = query(collection(db, "users"), where("username", "==", emailOrUsername));
+                    const snapshot = await getDocs(q);
+                    if (snapshot.empty) {
+                        throw new Error("Username not found");
+                    }
+                    emailToUse = snapshot.docs[0].data().email;
+                }
+    
+                const userCredential = await signInWithEmailAndPassword(auth, emailToUse, password);
+                const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+    
+                if (userDoc.exists()) {
+                    userNameDisplay.textContent = userDoc.data().fullName;
+                    userDisplay.classList.remove("hidden");
+                }
+    
+                alert("✅ Login successful!");
+    
+            } catch (error) {
+                alert("❌ Error: " + error.message);
+            } finally {
+                hideLoader();
+            }
+        });
+    </script>
+    
 </body>
 </html>
