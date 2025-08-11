@@ -10,7 +10,7 @@ body {
 /* Header and Profile Icon */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 20px;
     background-color: #ffffff;
     border-bottom: 1px solid #dddfe2;
