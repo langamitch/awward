@@ -111,6 +111,23 @@
             </div>
         </div>
     </div></div>
+    <!-- Loader indicator (initially hidden) -->
+<div id="loader" class="hidden" style="
+position: fixed;
+top: 50%;
+left: -500%;
+transform: translate(-50%, -50%);
+background: rgba(255,255,255,0.9);
+padding: 1rem 2rem;
+border-radius: 0.5rem;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+font-weight: bold;
+font-size: 1.2rem;
+z-index: 1000;
+">
+Loading...
+</div>
+
 
 <!-- Firebase App & Auth & Firestore -->
 <script type="module" src="index.js"></script>
