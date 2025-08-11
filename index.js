@@ -79,13 +79,13 @@ signupForm.addEventListener("submit", async (e) => {
             createdAt: new Date()
         });
 
-        alert("✅ Sign up successful!");
+        alert(" Sign up successful!");
         userNameDisplay.textContent = fullName;
         userDisplay.classList.remove("hidden");
         authOverlay.classList.remove("visible"); // hide auth form
 
     } catch (error) {
-        alert("❌ Error: " + error.message);
+        alert("Error: " + error.message);
     } finally {
         hideLoader();
         submitBtn.textContent = originalBtnText;

@@ -270,3 +270,17 @@ p{
 .hidden {
     display: none;
 }
+
+#user-display {
+    display: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb; /* light gray */
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+  }
