@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page Example</title>
+    <link rel="preload" href="https://assets.awwwards.com/assets/fonts/inter-tight/InterTight-VariableFont_wght.ttf" as="font" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+   
+</head>
+<body>
+
+    <header>
+        <div id="profile-icon" title="Login or Sign Up">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="M702-480 560-622l57-56 85 85 170-170 56 57-226 226Zm-342 0q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 260Zm0-340Z"/></svg>
+        </div>
+    </header>
+
+    <main>
+        <h1>Welcome to My Website</h1>
+        <p>This is a demonstration page. Click the profile icon in the top-right corner to open the login panel.</p>
+    </main>
+
+    <div id="auth-overlay">
+        <div class="button-top">
+        <button id="close-btn" class="close-btn" title="Close">&times;</button></div>
+        <div class="container">
+        <div class="img">
+            <img src="img/img.jpg" alt="">
+        </div>
+        <div class="auth-container">
+            
+            
+            <div id="login-form" class="form-container">
+                <h2>Log in</h2>
+                <form onsubmit="event.preventDefault(); alert('Login form submitted!');">
+                    <label for="login-email">Email or Username</label>
+                    <input type="text" id="login-email" placeholder="Email or Username">
+                    
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Password">
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="keep-logged-in">
+                        <label for="keep-logged-in">Keep me logged in</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Log in now</button>
+                </form>
+
+                <a href="#" class="forgot-password">Forgot your password?</a>
+                
+                <div class="divider">Or sign in with</div>
+                <div class="btn-container">
+                <button class="social-btn">
+                    <svg viewBox="0 0 48 48"><path fill="#000000" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#000000" d="M46.98 24.55c0-1.57-.15-3.09-.42-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#000000" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#000000" d="M24 48c6.48 0 11.93-2.13 15.89-5.82l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></svg>
+                    Google
+                </button>
+                <button class="social-btn">
+                    <svg viewBox="0 0 24 24"><path fill="#000" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </button>
+                <button class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></svg>
+                    Twitter
+                </button>
+            </div>
+                
+                <p class="switch-form" >No account? <a id="show-signup-link">Sign up</a></p>
+            </div>
+
+            <div id="signup-form" class="form-container hidden">
+                <h2>Sign up</h2>
+                <form onsubmit="event.preventDefault(); alert('Sign up form submitted!');">
+                    <label for="name">Full name</label>
+                    <input type="text" id="signup-username" placeholder="Enter your full name">
+                    
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" placeholder="Choose a username">
+                    
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Your email address">
+                    
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password">
+                    
+                    <button type="submit" class="submit-btn">Sign up now</button>
+                </form>
+                <p class="switch-form">Already have an account? <a id="show-login-link">Log in</a></p>
+            </div>
+        </div>
+    </div></div>
+
+<!-- Firebase App & Auth & Firestore -->
+<script type="module">
+    // Import Firebase functions
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+    import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDlyR-POe1lSy09eh0yKOiElYRhndhQBnM",
+    authDomain: "detto-f706a.firebaseapp.com",
+    projectId: "detto-f706a",
+    storageBucket: "detto-f706a.firebasestorage.app",
+    messagingSenderId: "221862826558",
+    appId: "1:221862826558:web:537ec8aabce53d414db76f"
+  };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // DOM elements
+    const profileIcon = document.getElementById('profile-icon');
+    const authOverlay = document.getElementById('auth-overlay');
+    const closeBtn = document.getElementById('close-btn');
+
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    const showSignupLink = document.getElementById('show-signup-link');
+    const showLoginLink = document.getElementById('show-login-link');
+
+    // Open/Close overlay
+    profileIcon.addEventListener('click', () => authOverlay.classList.add('visible'));
+    closeBtn.addEventListener('click', () => authOverlay.classList.remove('visible'));
+
+    // Switch forms
+    showSignupLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.classList.add('hidden');
+        signupForm.classList.remove('hidden');
+    });
+
+    showLoginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        signupForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+    });
+
+    // SIGN UP
+    signupForm.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fullName = document.querySelector('#signup-form input[placeholder="Enter your full name"]').value.trim();
+        const username = document.querySelector('#signup-form input[placeholder="Choose a username"]').value.trim();
+        const email = document.querySelector('#signup-form input[placeholder="Your email address"]').value.trim();
+        const password = document.querySelector('#signup-form input[placeholder="Create a password"]').value;
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Save extra user data in Firestore
+            await setDoc(doc(db, "users", user.uid), {
+                fullName,
+                username,
+                email,
+                createdAt: new Date()
+            });
+
+            alert("✅ Sign up successful!");
+            authOverlay.classList.remove('visible');
+        } catch (error) {
+            alert("❌ Error: " + error.message);
+        }
+    });
+
+    // SIGN IN
+    loginForm.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailOrUsername = document.querySelector('#login-email').value.trim();
+        const password = document.querySelector('#login-password').value;
+
+        try {
+            // If you want to allow username login, you’d need to query Firestore.
+            const userCredential = await signInWithEmailAndPassword(auth, emailOrUsername, password);
+            alert("✅ Login successful!");
+            authOverlay.classList.remove('visible');
+        } catch (error) {
+            alert("❌ Error: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>
