@@ -216,3 +216,33 @@ dashboardBtn.addEventListener('click', () => {
     profileMenu.style.display = "none";
 });
 
+
+    // Call Form Submit
+    document.getElementById("callForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        db.collection("callRequests").add({
+            number: document.getElementById("callNumber").value,
+            email: document.getElementById("callEmail").value,
+            country: document.getElementById("callCountry").value,
+            timestamp: new Date()
+        }).then(() => {
+            alert("Call request submitted!");
+            this.reset();
+        }).catch(err => console.error(err));
+    });
+
+    // Booking Form Submit
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        db.collection("bookings").add({
+            email: document.getElementById("bookingEmail").value,
+            name: document.getElementById("bookingName").value,
+            number: document.getElementById("bookingNumber").value,
+            country: document.getElementById("bookingCountry").value,
+            plan: document.getElementById("plan").value,
+            timestamp: new Date()
+        }).then(() => {
+            alert("Booking submitted!");
+            this.reset();
+        }).catch(err => console.error(err));
+    });

@@ -33,7 +33,7 @@
                 <li>Contact Us</li>
             </div>
             <div class="right">
-                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="M781.69-136.92 530.46-388.16q-30 24.77-69 38.77-39 14-80.69 14-102.55 0-173.58-71.01-71.03-71.01-71.03-173.54 0-102.52 71.01-173.6 71.01-71.07 173.54-71.07 102.52 0 173.6 71.03 71.07 71.03 71.07 173.58 0 42.85-14.38 81.85-14.39 39-38.39 67.84l251.23 251.23-42.15 42.16ZM380.77-395.38q77.31 0 130.96-53.66 53.66-53.65 53.66-130.96t-53.66-130.96q-53.65-53.66-130.96-53.66t-130.96 53.66Q196.15-657.31 196.15-580t53.66 130.96q53.65 53.66 130.96 53.66Z"/></svg></div>
+               
                 <div class="icons menu-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
                         <path d="M180-370v-0h600v60H180Zm0-160v-120h600v60H180Z"/>
@@ -191,14 +191,10 @@
     </div>
 </div>
 
-
+<section></section>
 <div class="marquee" aria-label="Scrolling marquee banner" role="region">
     <div class="marquee__track" id="marquee-track">
-      <!-- First set -->
-      <div class="marquee__item">We provide full-scale custom video production services — from creative direction to final editing.</div>
-      <div class="marquee__item">You get unlimited access to all our courses for one month, with new content added weekly.</div>
-      <div class="marquee__item">Watch all courses  for R300 per month</div>
-
+      
       
       <div class="marquee__item">We provide full-scale custom video production services — from creative direction to final editing.</div>
       <div class="marquee__item">You get unlimited access to all our courses for one month, with new content added weekly.</div>
@@ -210,7 +206,7 @@
       <div class="marquee__item">Watch all courses  for R300 per month</div>
 
   </div>
-
+</section>
 <section class="faq-section">
     <p> WORK</p>
 
@@ -255,6 +251,33 @@
     </div>
   </section>
   
+  <section class="booking">
+
+    <div class="form-container">
+
+        <!-- Booking Form -->
+        <form id="bookingForm">
+            <h1 class=" label">Book a Service</h1>
+            <label for="bookingEmail">Email</label>
+            <input type="email" id="bookingEmail" placeholder="Your Email" required>
+            <label for="bookingName">Name / Organisation</label>
+            <input type="text" id="bookingName" placeholder="Your Name or Organisation" required>
+            <label for="bookingNumber">Contact Number</label>
+            <input type="tel" id="bookingNumber" placeholder="Your Contact Number" required>
+            <label for="bookingCountry">Country</label>
+            <input type="text" id="bookingCountry" placeholder="Your Country" required>
+            <label for="plan">Select Plan</label>
+            <select id="plan" required>
+                <option value="">Choose Plan</option>
+                <option value="Lite Plan">Lite Plan</option>
+                <option value="Medium Plan">Medium Plan</option>
+                <option value="Premium Plan">Premium Plan</option>
+            </select>
+            <button type="submit" class="submit-btn">Book Now</button>
+        </form>
+
+    </div>
+</section>
 </div>
 
 <script type="module" src="index.js"></script>
