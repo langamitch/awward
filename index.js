@@ -215,3 +215,5 @@ dashboardBtn.addEventListener('click', () => {
     alert("Go to Dashboard (implement navigation)");
     profileMenu.style.display = "none";
 });
+
+
