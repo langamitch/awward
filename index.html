@@ -13,6 +13,9 @@
    
 </head>
 <body>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+  
 
     <header>
 
@@ -62,7 +65,7 @@
 
 
     </header>
-
+    <div id="body smooth-wrappe" >
     <main>
         <!--<div id="profile-icon" title="Login or Sign Up">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="M702-480 560-622l57-56 85 85 170-170 56 57-226 226Zm-342 0q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 260Zm0-340Z"/></svg>
@@ -76,14 +79,6 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        
-
-<!-- User Display -->
-<div id="user-display">
-    <span id="user-name"></span>
-  </div>
-
-
 
     </main>
 
@@ -214,28 +209,50 @@
     </div>
 </div>
 
+<section class="faq-section">
+    <p>FAQ</p>
+    
+    <div class="faq-item">
+      <button class="faq-question">
+        What is included in the R300 plan?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>You get unlimited access to all our courses for one month, with new content added weekly.</p>
+      </div>
+    </div>
   
-    <!-- Loader indicator (initially hidden) 
-<div id="loader" class="hidden" style="
-position: fixed;
-font-family: serif;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background: rgba(255,255,255,0.9);
-padding: 1rem 2rem;
-border-radius: 0.5rem;
-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-font-weight: bold;
-font-size: 11px;
-z-index: 1000;
-">
-Loading...
-</div>-->
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I cancel anytime?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes! You can cancel your subscription anytime from your profile settings without any extra charges.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">
+        Do you offer custom music video production?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>We provide full-scale custom video production services — from creative direction to final editing.</p>
+      </div>
+    </div>
+  </section>
+  
+</div>
 
-
-<!-- Firebase App & Auth & Firestore -->
 <script type="module" src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<!-- ScrollSmoother requires ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
 <script>
     const menuIcon = document.querySelector('.menu-icon');
     const sidebar = document.getElementById('sidebar');
@@ -248,6 +265,50 @@ Loading...
     closeSidebar.addEventListener('click', () => {
         sidebar.classList.remove('active');
     });
+
+    
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+ScrollSmoother.create({
+  wrapper: '#smooth-wrapper',
+  content: '#smooth-content',
+  smooth: 2,          // how smooth the scroll is (1-2 recommended)
+  effects: true,        // enable effects (like data-speed, data-lag on elements)
+  smoothTouch: 0.7      // smooth on touch devices
+});
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  const answer = item.querySelector('.faq-answer');
+  const icon = item.querySelector('.faq-icon');
+
+  let isOpen = false;
+
+  question.addEventListener('click', () => {
+    if (!isOpen) {
+      // Open
+      gsap.to(answer, {
+        duration: 0.5,
+        maxHeight: answer.scrollHeight,
+        opacity: 1,
+        ease: "power2.out"
+      });
+      gsap.to(icon, { rotation: 45, duration: 0.3 });
+      isOpen = true;
+    } else {
+      // Close
+      gsap.to(answer, {
+        duration: 0.5,
+        maxHeight: 0,
+        opacity: 0,
+        ease: "power2.in"
+      });
+      gsap.to(icon, { rotation: 0, duration: 0.3 });
+      isOpen = false;
+    }
+  });
+});
 </script>
 <script>
     const track = document.getElementById('marquee-track');
@@ -281,5 +342,7 @@ Loading...
   </script>
 
 
+</div>
+</div>
 </body>
 </html>

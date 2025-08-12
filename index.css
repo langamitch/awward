@@ -118,11 +118,15 @@ nav a {
     color: black;
     font-weight: 200;
 }
-
+.sidebar ul p{
+    font-size: 16px;
+    display: none;
+}
 .sidebar ul .socials{
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
-    gap: 60px;
+    flex-direction: column;
+    gap: 6px;
     font-size: 24px;
 
 }
@@ -562,3 +566,54 @@ p{
     }
 
   }
+
+  .faq-section {
+    max-width: 800px;
+    margin: 5rem auto;
+    padding: 0 1rem;
+    
+  }
+  
+  .faq-section h2 {
+    text-align: left;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+  
+  .faq-item {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+  }
+  
+  .faq-question {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: black;
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+  }
+  
+  .faq-answer p {
+    margin: 1rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
