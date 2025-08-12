@@ -1,160 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Sidebar Toggle</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Perfect No-Snap Marquee</title>
 <style>
-  :root { --sidebar-width: 300px; --transition: 300ms ease; }
-
   body {
-    margin: 0;
-    font-family: Inter, system-ui, Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+  }
+  .marquee {
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+  }
+  .marquee__track {
+    display: flex;
+    width: max-content; /* fit to content width */
+    animation-name: scroll;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: var(--duration, 10s);
+    will-change: transform;
+  }
+  .marquee__item {
+    flex: 0 0 auto;
+    padding: 0 40px;
+    line-height: 60px;
+    font-weight: bold;
+    color: #333;
   }
 
-  /* Your clickable icon */
-  .icons {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px;
-    cursor: pointer;
-    user-select: none;
-    z-index: 1100; /* above page, below sidebar */
-    position: relative;
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(var(--scroll-width) * -1px)); }
   }
-
-  /* overlay (dark backdrop) */
-  #sidebarOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--transition), visibility 0s linear var(--transition);
-    z-index: 1090;
-  }
-  #sidebarOverlay.show {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 0s;
-  }
-
-  /* Sidebar */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: var(--sidebar-width);
-    transform: translateX(-100%); /* hidden to left */
-    transition: transform var(--transition);
-    background: #ffffff;
-    box-shadow: 2px 0 18px rgba(0,0,0,0.12);
-    z-index: 1101;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    font-size: 26px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .menu { list-style: none; padding: 48px 0 0 0; margin: 0; }
-  .menu li { margin-bottom: 12px; }
-  .menu a { text-decoration: none; color: #111; font-size: 16px; display: inline-block; padding: 8px 6px; }
-  .menu a:focus { outline: 2px solid #999; }
 </style>
 </head>
 <body>
 
-<!-- Your icon (use the same HTML you gave) -->
-<div class="icons" role="button" aria-label="Open menu" aria-controls="mySidebar" aria-expanded="false" title="Open menu">
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
-    <path d="M180-370v-0h600v60H180Zm0-160v-120h600v60H180Z"/>
-  </svg>
+<h2>Perfect Smooth Continuous Marquee</h2>
+
+<div class="marquee" aria-label="Scrolling marquee banner" role="region">
+  <div class="marquee__track" id="marquee-track">
+    <!-- First set -->
+    <div class="marquee__item">Item 1</div>
+    <div class="marquee__item">Item 2</div>
+    <div class="marquee__item">Item 3</div>
+    <div class="marquee__item">Item 4</div>
+    <div class="marquee__item">Item 5</div>
+
+    <!-- Duplicate set -->
+    <div class="marquee__item">Item 1</div>
+    <div class="marquee__item">Item 2</div>
+    <div class="marquee__item">Item 3</div>
+    <div class="marquee__item">Item 4</div>
+    <div class="marquee__item">Item 5</div>
+  </div>
 </div>
 
-<!-- Overlay -->
-<div id="sidebarOverlay" hidden></div>
-
-<!-- Sidebar -->
-<nav id="mySidebar" class="sidebar" aria-hidden="true">
-  <button id="closeSidebarBtn" class="close-btn" aria-label="Close sidebar">&times;</button>
-
-  <ul class="menu">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Dashboard</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Logout</a></li>
-  </ul>
-</nav>
-
 <script>
-  // IIFE to avoid global scope pollution
-  (function () {
-    const icons = document.querySelector('.icons');
-    const sidebar = document.getElementById('mySidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    const closeBtn = document.getElementById('closeSidebarBtn');
+  const track = document.getElementById('marquee-track');
+  const itemsCount = track.children.length / 2;
 
-    if (!icons || !sidebar || !overlay || !closeBtn) {
-      console.warn('Sidebar script: Missing required elements (.icons, #mySidebar, #sidebarOverlay, #closeSidebarBtn)');
-      return;
+  // Get width of half the items (one full set)
+  function updateMarquee() {
+    let width = 0;
+    for(let i = 0; i < itemsCount; i++) {
+      width += track.children[i].offsetWidth;
     }
 
-    function openSidebar() {
-      sidebar.classList.add('open');
-      overlay.classList.add('show');
-      overlay.hidden = false;
-      icons.setAttribute('aria-expanded', 'true');
-      sidebar.setAttribute('aria-hidden', 'false');
-      // prevent body scroll while open (optional)
-      document.body.style.overflow = 'hidden';
-      // move focus to close button for accessibility
-      closeBtn.focus();
-    }
+    // Add gaps/paddings between items (computed via CSS)
+    // We'll get the gap by subtracting sum of widths from total width of the first set
+    const firstSetWidth = 0;
+    const firstSetElems = Array.from(track.children).slice(0, itemsCount);
+    const totalFirstSetWidth = firstSetElems.reduce((acc, el) => acc + el.offsetWidth, 0);
 
-    function closeSidebar() {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('show');
-      // allow transition to finish before hiding for accessibility
-      setTimeout(() => { overlay.hidden = true; }, 300);
-      icons.setAttribute('aria-expanded', 'false');
-      sidebar.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      // return focus to icon
-      icons.focus();
-    }
+    // Set CSS variables to be used in keyframes
+    track.style.setProperty('--scroll-width', width);
+    
+    // Set animation duration based on speed (pixels per second)
+    // Speed = 100px/s (adjust as you like)
+    const speed = 100; 
+    const duration = width / speed; // seconds
+    track.style.setProperty('--duration', `${duration}s`);
+  }
 
-    // open via click on your icon
-    icons.addEventListener('click', (e) => { e.preventDefault(); openSidebar(); });
-
-    // close interactions
-    closeBtn.addEventListener('click', closeSidebar);
-    overlay.addEventListener('click', closeSidebar);
-
-    // close when pressing Escape
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
-
-    // optional: if user clicks a link inside sidebar, close it
-    sidebar.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') closeSidebar();
-    });
-
-    // If your site dynamically injects .icons later, use delegation:
-    // document.body.addEventListener('click', (e) => { if (e.target.closest('.icons')) openSidebar(); });
-
-  })();
+  window.addEventListener('load', updateMarquee);
+  window.addEventListener('resize', updateMarquee);
 </script>
+
 </body>
 </html>
