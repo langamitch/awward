@@ -19,6 +19,23 @@ body {
     overflow-x: hidden;
     
 }
+/* Hide scrollbar but keep scrolling */
+body {
+    overflow-y: scroll; /* ensures scrolling still works */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+  #smooth-wrapper {
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  #smooth-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+    
 
 /* Header and Profile Icon */
 header {
@@ -490,7 +507,7 @@ p{
   .marquee {
     overflow: hidden;
     background: #f4f4f4;
-    display: none;
+    
   }
   .marquee__track {
     display: flex;
@@ -503,11 +520,11 @@ p{
   }
   .marquee__item {
     flex: 0 0 auto;
-    padding: 0 10px;
-    line-height: 30px;
+    padding: 0 20px;
+    line-height: 50px;
     font-weight: 500;
     color: #333;
-    font-size: 10px;
+    font-size: 13px;
   }
 
   @keyframes scroll {
@@ -616,4 +633,5 @@ p{
     font-size: 0.95rem;
     line-height: 1.6;
   }
+  
   
