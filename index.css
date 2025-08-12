@@ -94,7 +94,9 @@ nav a {
     .mid{
         display: none;
     }
-    
+    .marquee__item {
+        font-size: 13px;
+    }
 }
 
 /* Sidebar */
@@ -526,6 +528,8 @@ p{
     color: #333;
     font-size: 13px;
   }
+
+
 
   @keyframes scroll {
     from { transform: translateX(0); }
