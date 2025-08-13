@@ -346,8 +346,7 @@
             const docRef = await addDoc(collection(db, "bookings"), {
                 name,
                 email,
-                number,
-                timestamp: Date.now()
+                number
             });
 
             // Hide form elements
