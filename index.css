@@ -53,6 +53,7 @@ nav{
     align-items: center;
     background-color: #ffffffa2;
     backdrop-filter: blur(10px);
+    z-index: 9999;
 
    
 }
@@ -793,14 +794,16 @@ p{
 
            
 .work-section {
+    padding: 15px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 10px;
+    z-index:-9999;
   }
   
   .work-card {
     background-color: rgba(161, 161, 161, 0.211);
-              backdrop-filter: blur(3px) ;
+              backdrop-filter: blur(10px) ;
               -webkit-backdrop-filter: blur(3px) ;
     
     border-radius: 8px;
@@ -836,7 +839,7 @@ p{
   
   .card-info {
     padding: 15px;
-    
+    display: none;
   }
   
   .card-info h3 {
