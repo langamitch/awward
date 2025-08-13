@@ -818,10 +818,18 @@ p{
           display: none;
       }
       .marquee__item {
-          font-size: 11px;
+          font-size: 10px;
       }
       .work-section{
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  
+      }
+  }
+  @media (max-width: 810px) {
+
+
+      .work-section{
+        grid-template-columns: repeat(auto-fit, minmax(600px, 2fr));
   
       }
   }
@@ -855,8 +863,11 @@ p{
 
   .top{
     width: 100%;
+    padding: 15px;
+    margin-top: 20px;
     text-align: left;
   }
   .top p{
+    margin-top: 20px;
     font-weight: 400;
   }
