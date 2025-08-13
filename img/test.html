@@ -1,160 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work Section - Music Video</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETTO</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="img/img.jpg" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+   
 </head>
-<style>
-  body {
-  background-color: #fff;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-}
-
-.work-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 10px;
-}
-
-.work-card {
-  background-color: rgba(161, 161, 161, 0.211);
-            backdrop-filter: blur(3px) ;
-            -webkit-backdrop-filter: blur(3px) ;
-  
-  border-radius: 8px;
-  min-height: 400px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-@media (max-width: 600px) {
-    .mid{
-        display: none;
-    }
-    .marquee__item {
-        font-size: 11px;
-    }
-    .work-section{
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-
-    }
-}
-
-
-.video-wrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-info {
-  padding: 15px;
-  display: none;
-}
-
-.card-info h3 {
-  margin: 0 0 8px;
-  font-size: 1.2em;
-  color: #fff;
-}
-
-.card-info p {
-  margin: 0;
-  color: #aaa;
-  font-size: 0.9em;
-}
-
-</style>
 <body>
 
-  <section class="work-section">
+  
 
-    <div class="work-card">
-      <div class="video-wrapper">
-        <video autoplay muted loop playsinline preload="none"  loading="lazy">
-          <source src="https://videos.pexels.com/video-files/19858231/19858231-uhd_2560_1440_24fps.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="card-info">
-        <h3>City Drive</h3>
-        <p>Fast-paced music video in urban night scenes.</p>
-      </div>
-    </div>
-  
-    <div class="work-card">
-      <div class="video-wrapper">
-        <video autoplay muted loop playsinline preload="none"  loading="lazy">
-          <source src="https://videos.pexels.com/video-files/7669046/7669046-uhd_2560_1440_30fps.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="card-info">
-        <h3>Beach Vibes</h3>
-        <p>Relaxed summer shoot with ocean backdrops.</p>
-      </div>
-    </div>
-    <div class="work-card">
-      <div class="video-wrapper">
-        <video autoplay muted loop playsinline preload="none"  loading="lazy">
-          <source src="https://videos.pexels.com/video-files/7988633/7988633-uhd_1440_2732_25fps.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="card-info">
-        <h3>Beach Vibes</h3>
-        <p>Relaxed summer shoot with ocean backdrops.</p>
-      </div>
-    </div>
-    <div class="work-card">
-      <div class="video-wrapper">
-        <video autoplay muted loop playsinline preload="none"  loading="lazy">
-          <source src="https://videos.pexels.com/video-files/25662344/11903568_1920_1080_24fps.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="card-info">
-        <h3>Beach Vibes</h3>
-        <p>Relaxed summer shoot with ocean backdrops.</p>
-      </div>
-    </div>
-    <div class="work-card">
-      <div class="video-wrapper">
-        <video autoplay muted loop playsinline preload="none"  loading="lazy">
-          <source src="https://videos.pexels.com/video-files/19858178/19858178-uhd_2560_1440_24fps.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="card-info">
-        <h3>Beach Vibes</h3>
-        <p>Relaxed summer shoot with ocean backdrops.</p>
-      </div>
-    </div>
-  
-    <div class="work-card">
-      <div class="video-wrapper">
-        <video autoplay muted loop playsinline preload="none"  loading="lazy">
-          <source src="https://videos.pexels.com/video-files/9488549/9488549-uhd_2732_1440_25fps.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="card-info">
-        <h3>Drone Aerials</h3>
-        <p>Stunning cinematic shots from above.</p>
-      </div>
-    </div>
-  
-  </section>
+    <header>
 
+
+        <nav class="nav">
+
+            <div class="left">
+               <img src="img/Vector.svg" alt="">
+            </div>
+
+            <div class="mid">
+                <li>Index</li>
+                <li>About</li>
+                <li>Work</li>
+                <li>Plans</li>
+                <li>Contact Us</li>
+            </div>
+            <div class="right">
+               
+                <div class="icons menu-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
+                        <path d="M180-370v-0h600v60H180Zm0-160v-120h600v60H180Z"/>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+
+
+    </header>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+    <div id="body smooth-wrappe" >
+    <main>
+        <!--<div id="profile-icon" title="Login or Sign Up">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="M702-480 560-622l57-56 85 85 170-170 56 57-226 226Zm-342 0q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 260Zm0-340Z"/></svg>
+        </div>-->
+
+
+       
+        <div class="top">
+          <h3>Our Wok</h3>
+          <p style="margin-bottom: 60px;">Explore how Flow has halped businesses elevate their digital presence.</p>
+        </div>
+    </main>
+
+    <!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <span class="close-btn" id="closeSidebar">&times;</span>
+   
+    <ul>
+        <li><a href="/index.html">Index</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Plans</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <div class="socials" >
+            <p> Connect with us</p>
+            <li><a href="#">Instagram
+              
+              </a></li>
+            <li><a href="#">X</a></li>
+            </div>
+    </ul>
+
+</div>
+
+
+    <div id="auth-overlay">
+        <div class="button-top">
+        <button id="close-btn" class="close-btn" title="Close">&times;</button></div>
+        <div class="container">
+        <div class="img">
+            <img src="img/img.jpg" alt="">
+        </div>
+        <div class="auth-container">
+            
+            
+            <div id="login-form" class="form-container">
+                <h2>Log in</h2>
+                <form onsubmit="event.preventDefault();">
+                    <label for="login-email">Email or Username</label>
+                    <input type="text" id="login-email" placeholder="Email or Username">
+                    
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Password">
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="keep-logged-in">
+                        <label for="keep-logged-in">Keep me logged in</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Log in now</button>
+                </form>
+
+                <a href="#" class="forgot-password">Forgot your password?</a>
+                
+                <div class="divider hidden">Or sign in with</div>
+                <div class="btn-container hidden">
+                <button class="social-btn">
+                    <svg viewBox="0 0 48 48"><path fill="#000000" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#000000" d="M46.98 24.55c0-1.57-.15-3.09-.42-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#000000" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#000000" d="M24 48c6.48 0 11.93-2.13 15.89-5.82l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></svg>
+                    Google
+                </button>
+                <button class="social-btn">
+                    <svg viewBox="0 0 24 24"><path fill="#000" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </button>
+                <button class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></svg>
+                    Twitter
+                </button>
+            </div>
+                
+                <p class="switch-form" >No account? <a id="show-signup-link">Sign up</a></p>
+            </div>
+
+            <div id="signup-form" class="form-container hidden">
+                <h2>Sign up</h2>
+                <form onsubmit="event.preventDefault()">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                    
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" placeholder="Choose a username">
+                    
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Your email address">
+                    
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password">
+                    
+                    <button type="submit" class="submit-btn">Sign up now</button>
+                </form>
+                <p class="switch-form">Already have an account? <a id="show-login-link">Log in</a></p>
+            </div>
+        </div>
+    </div></div>
+
+    <!-- Profile menu overlay -->
+<div id="profile-menu">
+    <div id="menu">
+    
+    <button id="collection-btn">Upgrade to <span>PRO</span></button>
+   
+  </div>
+    <div id="menu">
+    
+    <button id="profile-btn">Profile</button>
+    <button id="dashboard-btn">Dashboard</button>
+    
+  </div>
+    <div id="menu">
+
+    <button id="logout-btn">Logout</button>
+  </div>
+  </div>
+ 
+  <div class="body-text">
+
+
+
+<section class="work-section">
+
+  <div class="work-card">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline preload="none"  loading="lazy">
+        <source src="https://videos.pexels.com/video-files/19858231/19858231-uhd_2560_1440_24fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="card-info">
+      <h3>City Drive</h3>
+      <p>Fast-paced music video in urban night scenes.</p>
+    </div>
+  </div>
+
+  <div class="work-card">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline preload="none"  loading="lazy">
+        <source src="https://videos.pexels.com/video-files/7669046/7669046-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="card-info">
+      <h3>Beach Vibes</h3>
+      <p>Relaxed summer shoot with ocean backdrops.</p>
+    </div>
+  </div>
+  <div class="work-card">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline preload="none"  loading="lazy">
+        <source src="https://videos.pexels.com/video-files/7988633/7988633-uhd_1440_2732_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="card-info">
+      <h3>Beach Vibes</h3>
+      <p>Relaxed summer shoot with ocean backdrops.</p>
+    </div>
+  </div>
+  <div class="work-card">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline preload="none"  loading="lazy">
+        <source src="https://videos.pexels.com/video-files/25662344/11903568_1920_1080_24fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="card-info">
+      <h3>Beach Vibes</h3>
+      <p>Relaxed summer shoot with ocean backdrops.</p>
+    </div>
+  </div>
+  <div class="work-card">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline preload="none"  loading="lazy">
+        <source src="https://videos.pexels.com/video-files/19858178/19858178-uhd_2560_1440_24fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="card-info">
+      <h3>Beach Vibes</h3>
+      <p>Relaxed summer shoot with ocean backdrops.</p>
+    </div>
+  </div>
+
+  <div class="work-card">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline preload="none"  loading="lazy">
+        <source src="https://videos.pexels.com/video-files/9488549/9488549-uhd_2732_1440_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="card-info">
+      <h3>Drone Aerials</h3>
+      <p>Stunning cinematic shots from above.</p>
+    </div>
+  </div>
+
+</section>
+
+
+  
+  <section class="booking">
+
+    <div class="form-container">
+
+        <!-- Booking Form -->
+        <p class="about-title"> Contact Us</p>
+        <p class="about-description">If you're interested in working with us, please contact us at <a href="mailto:contact@basestudios.com">contact@basestudios.com</a>.</p>
+      <button class="contact-button trigger-button" id="openPopup">Book a call</button>
+        <p class="about-title"> © 2025 base-studios. All rights reserved.</p>
+
+
+
+    </div>
+    <div class="popup-overlay" id="popupOverlay">
+      <button class="popup-close" id="closePopup" aria-label="Close popup">&times;</button>
+      <div class="popup">
+
+          <div class="popup-header">
+              <h2>Submit</h2>
+              <p>Let us build you something extraordinary.</p>
+          </div>
+          <form id="submissionForm">
+              <div class="form-control">
+                  <input type="name" placeholder="Name, Organization, Business, etc" required>
+              </div>
+              <div class="form-control">
+                  <input type="email" placeholder="Email address" required>
+              </div>
+              <div class="form-control">
+                  <input type="number" placeholder="Contact number" required>
+              </div>
+              <button type="submit" class="submit-btn">Submit Booking</button>
+              <div class="success-message" id="successMessage">Thank you for booking a call with base-studios! We're excited to connect with you. Your booking has been successfully received, and a member of our team will be in touch shortly. We appreciate your interest and look forward to learning more about how we can support your goals.</div>
+          </form>
+          <p style="font-size: 13px;
+          color: #888;
+          line-height: 1.5;
+          padding: 0 10px;" class="note">With so many submissions we cannot inform you when to call, nor give you any feedback.</p>
+      </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyDlyR-POe1lSy09eh0yKOiElYRhndhQBnM",
+    authDomain: "detto-f706a.firebaseapp.com",
+    projectId: "detto-f706a",
+    storageBucket: "detto-f706a.firebasestorage.app",
+    messagingSenderId: "221862826558",
+    appId: "1:221862826558:web:537ec8aabce53d414db76f"
+};
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const openPopupBtn = document.getElementById('openPopup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const submissionForm = document.getElementById('submissionForm');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    openPopupBtn.addEventListener('click', () => {
+        popupOverlay.style.display = 'flex';
+    });
+
+    popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            popupOverlay.style.display = 'none';
+        }
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        popupOverlay.style.display = 'none';
+    });
+
+    submissionForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = submissionForm.querySelector('.submit-btn');
+        const successMessage = document.getElementById('successMessage');
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting Booking...';
+
+        try {
+            const name = submissionForm.querySelector('input[placeholder*="Name"]').value;
+            const email = submissionForm.querySelector('input[type="email"]').value;
+            const number = submissionForm.querySelector('input[type="number"]').value;
+
+            const docRef = await addDoc(collection(db, "bookings"), {
+                name,
+                email,
+                number
+            });
+
+            // Hide form elements
+            submissionForm.querySelectorAll('.form-control').forEach(el => el.style.display = 'none');
+            submitBtn.style.display = 'none';
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            successMessage.style.color = '#28a745';
+            successMessage.style.fontSize = '16px';
+            successMessage.style.margin = '15px 0';
+            successMessage.style.textAlign = 'center';
+            successMessage.style.fontWeight = '500';
+            successMessage.textContent = 'Thank you! Your booking has been submitted successfully.';
+            
+            setTimeout(() => {
+                popupOverlay.style.display = 'none';
+                submissionForm.reset();
+                // Reset form display
+                submissionForm.querySelectorAll('.form-control').forEach(el => el.style.display = 'block');
+                submitBtn.style.display = 'block';
+                successMessage.style.display = 'none';
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 15000);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Error submitting form: ' + error.message);
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+</section>
+</div>
+
+<script type="module" src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<!-- ScrollSmoother requires ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+<script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const sidebar = document.getElementById('sidebar');
+    const closeSidebar = document.getElementById('closeSidebar');
+
+    menuIcon.addEventListener('click', () => {
+        sidebar.classList.add('active');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+
+    
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  const answer = item.querySelector('.faq-answer');
+  const icon = item.querySelector('.faq-icon');
+
+  let isOpen = false;
+
+  question.addEventListener('click', () => {
+    if (!isOpen) {
+      // Open
+      gsap.to(answer, {
+        duration: 0.5,
+        maxHeight: answer.scrollHeight,
+        opacity: 1,
+        ease: "power2.out"
+      });
+      gsap.to(icon, { rotation: 45, duration: 0.3 });
+      isOpen = true;
+    } else {
+      // Close
+      gsap.to(answer, {
+        duration: 0.5,
+        maxHeight: 0,
+        opacity: 0,
+        ease: "power2.in"
+      });
+      gsap.to(icon, { rotation: 0, duration: 0.3 });
+      isOpen = false;
+    }
+  });
+});
+</script>
+<script>
+    const track = document.getElementById('marquee-track');
+    const itemsCount = track.children.length / 2;
+  
+    // Get width of half the items (one full set)
+    function updateMarquee() {
+      let width = 0;
+      for(let i = 0; i < itemsCount; i++) {
+        width += track.children[i].offsetWidth;
+      }
+  
+      // Add gaps/paddings between items (computed via CSS)
+      // We'll get the gap by subtracting sum of widths from total width of the first set
+      const firstSetWidth = 0;
+      const firstSetElems = Array.from(track.children).slice(0, itemsCount);
+      const totalFirstSetWidth = firstSetElems.reduce((acc, el) => acc + el.offsetWidth, 0);
+  
+      // Set CSS variables to be used in keyframes
+      track.style.setProperty('--scroll-width', width);
+      
+      // Set animation duration based on speed (pixels per second)
+      // Speed = 100px/s (adjust as you like)
+      const speed = 100; 
+      const duration = width / speed; // seconds
+      track.style.setProperty('--duration', `${duration}s`);
+    }
+  
+    window.addEventListener('load', updateMarquee);
+    window.addEventListener('resize', updateMarquee);
+  </script>
+
+
+</div>
+</div>
 </body>
 </html>
