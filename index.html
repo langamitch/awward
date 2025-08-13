@@ -259,27 +259,128 @@
     <div class="form-container">
 
         <!-- Booking Form -->
-        <form id="bookingForm">
-            <h1 class=" label">Book a Service</h1>
-            <label for="bookingEmail">Email</label>
-            <input type="email" id="bookingEmail" placeholder="Your Email" required>
-            <label for="bookingName">Name / Organisation</label>
-            <input type="text" id="bookingName" placeholder="Your Name or Organisation" required>
-            <label for="bookingNumber">Contact Number</label>
-            <input type="tel" id="bookingNumber" placeholder="Your Contact Number" required>
-            <label for="bookingCountry">Country</label>
-            <input type="text" id="bookingCountry" placeholder="Your Country" required>
-            <label for="plan">Select Plan</label>
-            <select id="plan" required>
-                <option value="">Choose Plan</option>
-                <option value="Lite Plan">Basic Plan</option>
-                <option value="Medium Plan">Premium Plan</option>
-                <option value="Premium Plan">Deluxe Plan</option>
-            </select>
-            <button type="submit" class="submit-btn">Book Now</button>
-        </form>
+        <p class="about-title"> Contact Us</p>
+        <p class="about-description">If you're interested in working with us, please contact us at <a href="mailto:contact@basestudios.com">contact@basestudios.com</a>.</p>
+      <button class="contact-button trigger-button" id="openPopup">Book a call</button>
+        <p class="about-title"> © 2025 base-studios. All rights reserved.</p>
+
+
 
     </div>
+    <div class="popup-overlay" id="popupOverlay">
+      <button class="popup-close" id="closePopup" aria-label="Close popup">&times;</button>
+      <div class="popup">
+
+          <div class="popup-header">
+              <h2>Submit</h2>
+              <p>Let us build you something extraordinary.</p>
+          </div>
+          <form id="submissionForm">
+              <div class="form-control">
+                  <input type="name" placeholder="Name, Organization, Business, etc" required>
+              </div>
+              <div class="form-control">
+                  <input type="email" placeholder="Email address" required>
+              </div>
+              <div class="form-control">
+                  <input type="number" placeholder="Contact number" required>
+              </div>
+              <button type="submit" class="submit-btn">Submit Booking</button>
+              <div class="success-message" id="successMessage">Thank you for booking a call with base-studios! We're excited to connect with you. Your booking has been successfully received, and a member of our team will be in touch shortly. We appreciate your interest and look forward to learning more about how we can support your goals.</div>
+          </form>
+          <p style="font-size: 13px;
+          color: #888;
+          line-height: 1.5;
+          padding: 0 10px;" class="note">With so many submissions we cannot inform you when to call, nor give you any feedback.</p>
+      </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyDlyR-POe1lSy09eh0yKOiElYRhndhQBnM",
+    authDomain: "detto-f706a.firebaseapp.com",
+    projectId: "detto-f706a",
+    storageBucket: "detto-f706a.firebasestorage.app",
+    messagingSenderId: "221862826558",
+    appId: "1:221862826558:web:537ec8aabce53d414db76f"
+};
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const openPopupBtn = document.getElementById('openPopup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const submissionForm = document.getElementById('submissionForm');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    openPopupBtn.addEventListener('click', () => {
+        popupOverlay.style.display = 'flex';
+    });
+
+    popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            popupOverlay.style.display = 'none';
+        }
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        popupOverlay.style.display = 'none';
+    });
+
+    submissionForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = submissionForm.querySelector('.submit-btn');
+        const successMessage = document.getElementById('successMessage');
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting Booking...';
+
+        try {
+            const name = submissionForm.querySelector('input[placeholder*="Name"]').value;
+            const email = submissionForm.querySelector('input[type="email"]').value;
+            const number = submissionForm.querySelector('input[type="number"]').value;
+
+            const docRef = await addDoc(collection(db, "bookings"), {
+                name,
+                email,
+                number,
+                timestamp: Date.now()
+            });
+
+            // Hide form elements
+            submissionForm.querySelectorAll('.form-control').forEach(el => el.style.display = 'none');
+            submitBtn.style.display = 'none';
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            successMessage.style.color = '#28a745';
+            successMessage.style.fontSize = '16px';
+            successMessage.style.margin = '15px 0';
+            successMessage.style.textAlign = 'center';
+            successMessage.style.fontWeight = '500';
+            successMessage.textContent = 'Thank you! Your booking has been submitted successfully.';
+            
+            setTimeout(() => {
+                popupOverlay.style.display = 'none';
+                submissionForm.reset();
+                // Reset form display
+                submissionForm.querySelectorAll('.form-control').forEach(el => el.style.display = 'block');
+                submitBtn.style.display = 'block';
+                successMessage.style.display = 'none';
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 15000);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Error submitting form: ' + error.message);
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
 </section>
 </div>
 
