@@ -98,6 +98,9 @@ nav a {
     .marquee__item {
         font-size: 10px;
     }
+    .body-text{
+        padding: 80px 20px;
+    }
 }
 
 /* Sidebar */
@@ -818,18 +821,10 @@ p{
           display: none;
       }
       .marquee__item {
-          font-size: 10px;
+          font-size: 11px;
       }
       .work-section{
-        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-  
-      }
-  }
-  @media (max-width: 810px) {
-
-
-      .work-section{
-        grid-template-columns: repeat(auto-fit, minmax(600px, 2fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   
       }
   }
@@ -863,7 +858,7 @@ p{
 
   .top{
     width: 100%;
-    padding: 15px;
+    padding: 15px;;
     margin-top: 20px;
     text-align: left;
   }
