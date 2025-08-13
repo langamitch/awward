@@ -528,7 +528,7 @@ p{
     line-height: 50px;
     font-weight: 500;
     color: #333;
-    font-size: 13px;
+    font-size: 10px;
   }
 
 
@@ -652,7 +652,7 @@ p{
             max-width: 600px;
             width: 100%;
             text-align: center;
-            margin-top: 40px;
+            margin-top: 40px;z-index:10000;
         }
 
         .trigger-button {
