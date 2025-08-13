@@ -576,7 +576,6 @@ p{
   @media (max-width: 900px) {
     .body-text {
       flex-direction: column;
-      padding: 50px 30px;
       gap: 40px;
     }
 
@@ -852,4 +851,12 @@ p{
     margin: 0;
     color: #aaa;
     font-size: 0.9em;
+  }
+
+  .top{
+    width: 100%;
+    text-align: left;
+  }
+  .top p{
+    font-weight: 400;
   }
