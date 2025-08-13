@@ -111,7 +111,7 @@ nav a {
     transition: left 0.3s ease;
     padding: 20px;
     z-index: 1000;
-    backdrop-filter: blur(10px);
+   
     
 
 }
@@ -790,3 +790,63 @@ p{
            .about-description, .contact-button {
             margin-bottom: 20px;
            }
+
+           
+.work-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 10px;
+  }
+  
+  .work-card {
+    background-color: rgba(161, 161, 161, 0.211);
+              backdrop-filter: blur(3px) ;
+              -webkit-backdrop-filter: blur(3px) ;
+    
+    border-radius: 8px;
+    min-height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  @media (max-width: 600px) {
+      .mid{
+          display: none;
+      }
+      .marquee__item {
+          font-size: 11px;
+      }
+      .work-section{
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  
+      }
+  }
+  
+  
+  .video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-info {
+    padding: 15px;
+    
+  }
+  
+  .card-info h3 {
+    margin: 0 0 8px;
+    font-size: 1.2em;
+    color: #fff;
+  }
+  
+  .card-info p {
+    margin: 0;
+    color: #aaa;
+    font-size: 0.9em;
+  }
